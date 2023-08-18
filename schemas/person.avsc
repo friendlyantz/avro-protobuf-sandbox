@@ -1,18 +1,34 @@
+[
 {
-  "name": "person",
-  "type": "record",
-  "fields": [
+    "name": "address",
+    "type": "record",
+    "fields": [
     {
-      "name": "name",
-      "type": "string"
+        "name": "street",
+        "type": "string"
     },
     {
-      "name": "age",
-      "type": "int"
-    },
-    {
-      "name": "address",
-      "type": "address"
+        "name": "city",
+        "type": "string"
     }
-  ]
+    ]
+},
+{
+    "name": "person",
+    "type": "record",
+    "fields": [
+    {
+        "name": "name",
+        "type": "string"
+    },
+    {
+        "name": "age",
+        "type": "int"
+    },
+    {
+        "name": "address",
+        "type": "address"
+    }
+    ]
 }
+]

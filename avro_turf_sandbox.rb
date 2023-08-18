@@ -8,10 +8,11 @@ def decode(encoded_data)
   # Decode some data using a named schema. The schema file should exist in the
   # schemas directory with the file name `<name>.avsc`.
   AVRO.decode(encoded_data, schema_name: "person")
+  # TODO figure out how to decode multiple objects from one file
 end
 
 avro_encoded_object = AVRO.encode(
-  { "name" => "Ruby",
+  { "name" => "Ruby💎",
     "age" => 77, 
     # includes another fields from schema for `address`
     "address" => {
@@ -50,4 +51,22 @@ puts "========================================================================"
 decoded_avro_object_for_vlad = decode(File.read('db/avro_vlad.bin'))
 puts "Avro Decoded object for Vlad:"
 puts decoded_avro_object_for_vlad
+
+puts "========================================================================"
+
+puts "Avro Decoded object for Python🐍:"
+File.open('db/avro_python.bin').each_line do |line|
+  # FIXME not sure how to decode multiple records from one payload
+  decoded_avro_object_for_python = decode(line)
+  puts decoded_avro_object_for_python
+end
+
+puts "========================================================================"
+
+puts "Avro SCHEMALESS Decoded object for Python🐍:"
+File.open('db/avro_python.bin').each_line do |line|
+  # FIXME not sure how to decode multiple records from one payload
+  decoded_avro_object_for_python = AVRO.decode(line)
+  puts decoded_avro_object_for_python
+end
 
