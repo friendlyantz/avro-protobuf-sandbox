@@ -1,17 +1,24 @@
 # Action Plan
 
-- [ ] install and study [Avro (Ruby Gem)](https://rubygems.org/gems/avro) `bundle add avro`
-- [x] install and study [Avro Turf(Ruby Gem)](https://github.com/dasch/avro_turf) `bundle add avro_turf`
+- [ ] install and study [Avro (Ruby Gem)](https://rubygems.org/gems/avro) `bundle add avro` - dissapointment due to lack of gem docs
+- [x] install and study [Avro Turf(Ruby Gem)](https://github.com/dasch/avro_turf) `bundle add avro_turf` - can't decode multiple entries???
 - [x] deserialize Avro binaries encoded by other languages (Ruby <=> Python)
-- [ ] AvroTurf - figure out how to decode multiple items from a payload
-- [ ] modify schema and play with schema evolution, backward and forward compatibility
-- [ ] install protobuf and compare results
+- [ ] AvroTurf - figure out how to decode multiple items from a payload [asked a question](https://github.com/dasch/avro_turf/discussions/193)
+-  modify schema and play with schema evolution, backward and forward compatibility 
+    - [x] AvroTurf
+    - [ ] Avro
+- [ ] install protobuf and compare results 
 
 # Notes 
+
+> to stop .bin files make changes to you `git` do this:
+> `git update-index --assume-unchanged path/to/your/file.bin`
 
 ## Avro Turf
 
 Decided to ignore Avro and go straight into AvroTurf
+
+I wasn't able to decode multiple entries from 1 payload, asked [a question](https://github.com/dasch/avro_turf/discussions/193)
 
 ### 1. I hardcoded Avro schemas for `person` that includes another schema for `address`
 
@@ -68,6 +75,10 @@ Basic data packed will be smth alike this:
 
 ### 2. And then experimented in simple avro ruby script to encode/decode data in avro and store binaries under `db` dir (for potential comparison with protobuf)
 
+### 3. Schema evolution
+
+Decoded existing payload containting above `WRITER'S` schema (with which it was encoded `schemas/person.avsc`) with a new `READER'S` schema (`schemas/person_v2.avsc`)
+
 ---
 
 # Python Avro deserializer
@@ -86,6 +97,11 @@ py avro_python.py
 {'name': 'Ruby💎', 'age': 77, 'address': {'street': 'Collins Street', 'city': 'Melbourne'}}
 {'name': 'Anton', 'age': 36, 'address': {'street': 'Esplanade', 'city': 'Melbourne'}}
 ```
+---
+
+# ProtoBuf
+
+`bundle add protobuf`
 ---
 
 Resources:

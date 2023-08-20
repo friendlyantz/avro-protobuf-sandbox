@@ -1,0 +1,23 @@
+[
+{
+    "name": "person",
+    "doc": "removed address object, but had to keep this schema as an array",
+    "type": "record",
+    "fields": [
+    {
+        "type": "string",
+        "name": "fav_color",
+        "doc": "type within the type",
+        "default": "red🟥"
+    },
+    {
+        "name": "name",
+        "type": "string"
+    },
+    {
+        "name": "age",
+        "type": "int"
+    }
+    ]
+}
+]

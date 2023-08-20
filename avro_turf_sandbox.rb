@@ -11,6 +11,10 @@ def decode(encoded_data)
   # TODO figure out how to decode multiple objects from one file
 end
 
+def decode_with_new_schema(encoded_data)
+  AVRO.decode(encoded_data, schema_name: "person_v2")
+end
+
 avro_encoded_object = AVRO.encode(
   { "name" => "Ruby💎",
     "age" => 77, 
@@ -57,6 +61,8 @@ puts "========================================================================"
 puts "Avro Decoded object for Python🐍:"
 File.open('db/avro_python.bin').each_line do |line|
   # FIXME not sure how to decode multiple records from one payload
+  # This can be done in standard `avro` gem using
+  # Avro::DataFile.open('db/avro_python.bin').entries
   decoded_avro_object_for_python = decode(line)
   puts decoded_avro_object_for_python
 end
@@ -69,4 +75,26 @@ File.open('db/avro_python.bin').each_line do |line|
   decoded_avro_object_for_python = AVRO.decode(line)
   puts decoded_avro_object_for_python
 end
+
+puts "========================================================================"
+puts "========================================================================"
+decoded_avro_object_for_anton_with_new_schema = decode_with_new_schema(
+  File.read('db/avro_anton.bin')
+)
+puts "Avro Decoded object for Anton using schema v2 (SCHEMA EVOLUTION):"
+puts decoded_avro_object_for_anton_with_new_schema  
+
+avro_encoded_object_with_new_schema = AVRO.encode(
+  {
+    "name" => "Ruby_with_evolved_schema💎",
+    "fav_color" => "orange🟠", # this is required for writing
+    "age" => 88
+  },
+  schema_name: "person_v2", 
+  validate: true
+)
+
+puts "========================================================================"
+puts "Avro Decoded - (SCHEMALESS/writes schema only):"
+puts AVRO.decode(avro_encoded_object_with_new_schema)
 
