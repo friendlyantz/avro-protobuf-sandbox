@@ -1,12 +1,12 @@
 # Action Plan
 
-- [ ] install and study [Avro (Ruby Gem)](https://rubygems.org/gems/avro) `bundle add avro` - dissapointment due to lack of gem docs
+- [x] install and study [Avro (Ruby Gem)](https://rubygems.org/gems/avro) `bundle add avro` - dissapointment due to lack of gem docs
 - [x] install and study [Avro Turf(Ruby Gem)](https://github.com/dasch/avro_turf) `bundle add avro_turf` - can't decode multiple entries???
 - [x] deserialize Avro binaries encoded by other languages (Ruby <=> Python)
 - [ ] AvroTurf - figure out how to decode multiple items from a payload [asked a question](https://github.com/dasch/avro_turf/discussions/193)
 -  modify schema and play with schema evolution, backward and forward compatibility 
     - [x] AvroTurf
-    - [ ] Avro
+    - [x] Avro
 - [ ] install protobuf and compare results 
 
 # Notes 
@@ -97,6 +97,14 @@ py avro_python.py
 {'name': 'Ruby💎', 'age': 77, 'address': {'street': 'Collins Street', 'city': 'Melbourne'}}
 {'name': 'Anton', 'age': 36, 'address': {'street': 'Esplanade', 'city': 'Melbourne'}}
 ```
+---
+
+# Avro Gem (original)
+
+I found it lacking gem documentation but was relatevely easy to figure out how to use it via debugger and referring to their specs
+
+refer `avro_sandbox.rb`
+
 ---
 
 # ProtoBuf
