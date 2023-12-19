@@ -10,9 +10,14 @@ GEM
     excon (0.100.0)
     method_source (1.0.0)
     multi_json (1.15.0)
+    nokogiri (1.15.5-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.5-x86_64-linux)
+      racc (~> 1.4)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    racc (1.7.3)
 
 PLATFORMS
   arm64-darwin-23
@@ -21,6 +26,7 @@ PLATFORMS
 DEPENDENCIES
   avro (~> 1.11)
   avro_turf (~> 1.9)
+  nokogiri (~> 1.15)
   pry (~> 0.14.2)
 
 BUNDLED WITH

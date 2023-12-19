@@ -4,8 +4,10 @@ source "https://rubygems.org"
 
 # gem "rails"
 
-gem "avro", "~> 1.11"
+gem "avro"
 
-gem "avro_turf", "~> 1.9"
+gem "avro_turf"
 
-gem "pry", "~> 0.14.2"
+gem "pry"
+
+gem "nokogiri"
